@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Resolve the real path even when called via a symlink
+SCRIPT_PATH="$(readlink -f "$0")"
+SCRIPT_DIR="$(dirname "$SCRIPT_PATH")"
+
+COMMAND=$1
+
+case $COMMAND in
+  install)
+    "$SCRIPT_DIR/install.sh"
+    ;;
+  uninstall)
+    "$SCRIPT_DIR/uninstall.sh"
+    ;;
+  rebuild)
+    "$SCRIPT_DIR/rebuild.sh"
+    ;;
+  list)
+    "$SCRIPT_DIR/list.sh"
+    ;;
+  status)
+    "$SCRIPT_DIR/status.sh"
+    ;;
+  *)
+    echo "❌ Unknown command: $COMMAND"
+    echo "Usage: ./webapp [install|uninstall|rebuild|list|status]"
+    exit 1
+    ;;
+esac

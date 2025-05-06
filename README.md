@@ -20,7 +20,23 @@ A lightweight CLI toolkit for scaffolding and managing multi-container web appli
 ```bash
 # Install a new app
 webapp install
+```
 
+When prompted:
+
+- Enter the full domain (e.g. `myapp.sdev.no`)
+- Specify available **frontend** and **backend** ports  
+  (used for Docker internal port bindings and local proxy access)
+
+The CLI will:
+
+- Copy the template project
+- Generate a `.env` file automatically
+- Register the project in `apps.json`
+- Build and start Docker containers
+- Confirm backend and frontend health
+
+```bash
 # View all installed apps
 webapp list
 

@@ -6,11 +6,32 @@ read -p "Enter project domain (e.g. hfh.sdev.no): " DOMAIN
 # Extract subdomain (for naming containers, db)
 NAME=$(echo "$DOMAIN" | cut -d'.' -f1)
 
-# Generate random base port between 3000–3999
-BASE_PORT=$((RANDOM % 1000 + 3000))
-PORT_FRONTEND=$BASE_PORT
-PORT_BACKEND=$((BASE_PORT + 1))
-PORT_MONGO=$((BASE_PORT + 2))  # This is NOT used in .env anymore
+# Function to check if port is in use
+is_port_in_use() {
+  lsof -i :"$1" >/dev/null 2>&1 || nc -z localhost "$1" >/dev/null 2>&1
+}
+
+# Prompt for Frontend port
+while true; do
+  read -p "Enter external port for FRONTEND (e.g. 3000): " PORT_FRONTEND
+  if is_port_in_use "$PORT_FRONTEND"; then
+    echo "❌ Port $PORT_FRONTEND is already in use. Try another."
+  else
+    break
+  fi
+done
+
+# Prompt for Backend port
+while true; do
+  read -p "Enter external port for BACKEND (e.g. 4000): " PORT_BACKEND
+  if is_port_in_use "$PORT_BACKEND"; then
+    echo "❌ Port $PORT_BACKEND is already in use. Try another."
+  else
+    break
+  fi
+done
+
+PORT_MONGO=27017  # Fixed internal use
 
 # Create app directory from template
 APP_ROOT="/opt/webapps"

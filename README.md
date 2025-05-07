@@ -24,7 +24,7 @@ webapp install
 
 When prompted:
 
-- Enter the full domain (e.g. `myapp.sdev.no`)
+- Enter the full domain (e.g. `example.com`)
 - Specify available **frontend** and **backend** ports  
   (used for Docker internal port bindings and local proxy access)
 

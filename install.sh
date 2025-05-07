@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "🧱 New Next.js App Setup"
-read -p "Enter project domain (e.g. hfh.sdev.no): " DOMAIN
+read -p "Enter project domain (e.g. example.com): " DOMAIN
 
 # Extract subdomain (for naming containers, db)
 NAME=$(echo "$DOMAIN" | cut -d'.' -f1)

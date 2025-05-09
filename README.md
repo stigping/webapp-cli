@@ -25,8 +25,7 @@ webapp install
 When prompted:
 
 - Enter the full domain (e.g. `example.com`)
-- Specify available **frontend** and **backend** ports  
-  (used for Docker internal port bindings and local proxy access)
+- Specify available **frontend** and **backend** ports
 
 The CLI will:
 
@@ -63,6 +62,19 @@ This CLI expects your directory to look like this:
 ├── test-project/            # Example generated app
 ├── apps.json                # Registry of all apps
 ```
+
+---
+
+## 🧭 How this works with NGINX Proxy Manager (NPM):
+
+Use the **webserver IP and exposed frontend port** from your `.env` file as the destination for NPM.
+
+- Frontend target: `http://webserverIP:<NEXT_PUBLIC_PORT>`
+- Backend target (if needed): `http://webserverIP:<BACKEND_PORT>`
+
+Ports are defined per project in the `.env` and exposed via `docker-compose.override.yml`.
+
+This setup enables multiple isolated web apps to coexist on one host and be routed externally using NPM.
 
 ---
 

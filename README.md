@@ -1,3 +1,8 @@
+![License](https://img.shields.io/github/license/stigping/webapp-cli)
+![Version](https://img.shields.io/github/v/tag/stigping/webapp-cli?label=version)
+![Last Commit](https://img.shields.io/github/last-commit/stigping/webapp-cli)
+![Issues](https://img.shields.io/github/issues/stigping/webapp-cli)
+
 # 🛠️ WebApp CLI
 
 A lightweight CLI toolkit for scaffolding and managing multi-container web applications using Docker. Designed to work seamlessly with the [next-template-docker](https://github.com/stigping/next-template-docker) stack.
